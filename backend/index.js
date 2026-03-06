@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import booksRoute from "./routes/booksRoute.js"
+import booksRoute from "./routes/booksRoute.js";
 
 import { configDotenv } from "dotenv";
 configDotenv();
@@ -14,12 +14,25 @@ const mongoDBURL = process.env.mongoDBURL;
 
 console.log(process.env.PORT);
 
+// Middleware for handling CORS policy
+// Option 1. Allow all origins with default of cors(*)
+// app.use(cors());
+
+// Option 2. Allow custom Origins
+app.use(
+  cors({
+    origin: `http://localhost:3000`,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  }),
+);
+
 app.get("/", (req, res) => {
   console.log(req);
   return res.status(200).send("Hello from server");
 });
 
-app.use('/books', booksRoute);
+app.use("/books", booksRoute);
 
 mongoose
   .connect(mongoDBURL)
