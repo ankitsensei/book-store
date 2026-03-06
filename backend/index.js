@@ -84,6 +84,22 @@ app.put("/books/:id", async (req, res) => {
   }
 });
 
+// Route for delete a hook
+app.delete("/books/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Book.findByIdAndDelete(id, req.body);
+    if (!result) {
+      return res.status(404).send({ message: "Book not found" });
+    } else {
+      return res.status(200).send({ message: "Book deleted successfully" });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ error: err.message });
+  }
+});
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
