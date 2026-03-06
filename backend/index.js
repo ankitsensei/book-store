@@ -4,17 +4,19 @@ import { Book } from "./models/bookModel.js";
 import { configDotenv } from "dotenv";
 configDotenv();
 const app = express();
-const PORT = process.env.PORT;
+// Middleware for parsing request body
+app.use(express.json());
+const PORT = process.env.PORT || 5555;
 const mongoDBURL = process.env.mongoDBURL;
 
-console.log(process.env.PORT)
+console.log(process.env.PORT);
 
 app.get("/", (req, res) => {
   console.log(req);
   return res.status(200).send("Hello from server");
 });
 
-app.get("/books", async (req, res) => {
+app.post("/books", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
@@ -31,6 +33,17 @@ app.get("/books", async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
+  }
+});
+
+// Get all books from db
+app.get("/books", async (req, res) => {
+  try {
+    const books = await Book.find({});
+    return res.status(200).json(books);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: err.message });
   }
 });
 
