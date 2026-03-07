@@ -39,8 +39,8 @@ router.get("/", async (req, res) => {
 });
 
 // Get one book from db via id
-router.get("/:id", async (req, res) => {
-  try {
+router.get("/details/:id", async (req, res) => {
+  try { 
     const { id } = req.params;
     const book = await Book.findById(id);
     return res.status(200).json(book);
@@ -54,7 +54,7 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
-      return response.status(400).send({
+      return res.status(400).send({
         message: "Send all required fields: title, author, publishYear",
       });
     }

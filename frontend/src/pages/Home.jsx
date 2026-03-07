@@ -23,6 +23,7 @@ const Home = () => {
         setLoading(false);
       });
   }, []);
+
   return (
     <div className="p-4">
       <div className="flex justify-between items-center">
@@ -52,7 +53,7 @@ const Home = () => {
           </thead>
           <tbody>
             {books.map((book, index) => (
-              <tr key={books.id} className="h-8">
+              <tr key={book._id} className="h-8">
                 <td className="border border-slate-700 rounded-md text-center">
                   {index + 1}
                 </td>
@@ -67,13 +68,13 @@ const Home = () => {
                 </td>
                 <td className="border border-slate-700 rounded-md text-center">
                   <div className="flex justify-center gap-x-4">
-                    <NavLink to={`/books/details/${book.id}`}>
+                    <NavLink to={`/books/details/${book._id}`}>
                       <BsInfoCircle className="text-2xl text-green-800" />
                     </NavLink>
-                    <NavLink to={`/books/edit/${book.id}`}>
+                    <NavLink to={`/books/edit/${book._id}`}>
                       <AiOutlineEdit className="text-2xl text-yellow-800" />
                     </NavLink>
-                    <NavLink to={`/books/delete/${book.id}`}>
+                    <NavLink to={`/books/delete/${book._id}`}>
                       <MdOutlineDelete className="text-2xl text-red-800" />
                     </NavLink>
                   </div>

@@ -13,8 +13,6 @@ app.use(express.json());
 const PORT = process.env.PORT || 5555;
 const mongoDBURL = process.env.mongoDBURL;
 
-console.log(process.env.PORT);
-
 // Middleware for handling CORS policy
 // Option 1. Allow all origins with default of cors(*)
 app.use(cors());

@@ -5,14 +5,14 @@ import BackBtn from "../components/BackBtn";
 import Spinner from "../components/Spinner";
 
 const ShowBook = () => {
-  const [book, setBook] = useState(1);
+  const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`http://localhost:5555/books/details/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
@@ -21,7 +21,7 @@ const ShowBook = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
   return (
     <div className="p-4">
       <BackBtn />
@@ -32,7 +32,7 @@ const ShowBook = () => {
         <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
           <div className="my-4">
             <span className="text-xl mr-4 text-gray-500">Id</span>
-            <span>{book.id}</span>
+            <span>{book._id}</span>
           </div>
           <div className="my-4">
             <span className="text-xl mr-4 text-gray-500">Title</span>
@@ -52,7 +52,7 @@ const ShowBook = () => {
           </div>
           <div className="my-4">
             <span className="text-xl mr-4 text-gray-500">Last Update Time</span>
-            <span>{new Date(book.updateAt).toString()}</span>
+            <span>{new Date(book.updatedAt).toString()}</span>
           </div>
         </div>
       )}
