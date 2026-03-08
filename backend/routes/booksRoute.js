@@ -51,7 +51,7 @@ router.get("/details/:id", async (req, res) => {
 });
 
 // Route for update a book
-router.put("/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
@@ -68,7 +68,7 @@ router.put("/:id", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send({ message: err.message });
+    // res.status(500).send({ message: err.message });
   }
 });
 
