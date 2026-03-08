@@ -26,6 +26,7 @@ const EditBook = () => {
       })
       .catch((error) => {
         setLoading(false);
+        alert("An error happend. Please check console.");
         console.log(error);
       });
   }, [id]);
