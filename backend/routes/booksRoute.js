@@ -73,7 +73,7 @@ router.put("/edit/:id", async (req, res) => {
 });
 
 // Route for delete a hook
-router.delete("/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const result = await Book.findByIdAndDelete(id, req.body);
