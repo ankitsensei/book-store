@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+
+.sidebarItems{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  /* margin-bottom: 20px; */
+  /* background: white; */
+  padding:8px 10px;
+  border-radius: 10px;
+}
+.sidebarIcons{
+  font-size: 30px;
+}
