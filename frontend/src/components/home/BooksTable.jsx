@@ -1,52 +1,42 @@
 import React from "react";
 import { NavLink } from "react-router";
-import { AiOutlineEdit } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import Btn from "../Btn";
 
 const BooksTable = ({ books }) => {
   return (
-    <table className="w-full border-separate border-spacing-2">
+    <table className="w-full border-collapse border-spacing-2">
       <thead>
-        <tr>
-          <th className="border border-slate-600 rounded-md">No</th>
-          <th className="border border-slate-600 rounded-md">Title</th>
-          <th className="border border-slate-600 rounded-md max-md:hidden">
-            Author
-          </th>
-          <th className="border border-slate-600 rounded-md max-md:hidden">
+        <tr className="">
+          <th className="text-start border-b border-zinc-300 py-4">No</th>
+          <th className="text-start border-b border-zinc-300 py-4">Title</th>
+          <th className="text-start border-b border-zinc-300 py-4">Author</th>
+          <th className="text-start border-b border-zinc-300 py-4">
             Publish Year
           </th>
-          <th className="border border-slate-600 rounded-md max-md:hidden">
+          <th className="text-start border-b border-zinc-300 py-4">
             Operations
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="">
         {books.map((book, index) => (
-          <tr key={book._id} className="h-8">
-            <td className="border border-slate-700 rounded-md text-center">
-              {index + 1}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center">
-              {book.title}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center max-mid:hidden">
-              {book.author}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center max-mid:hidden">
+          <tr key={book._id} className="h-8 w-full">
+            <td className="border-b border-zinc-300 py-4">{index + 1}</td>
+            <td className="border-b border-zinc-300 py-4">{book.title}</td>
+            <td className="border-b border-zinc-300 py-4">{book.author}</td>
+            <td className="border-b border-zinc-300 py-4">
               {book.publishYear}
             </td>
-            <td className="border border-slate-700 rounded-md text-center">
-              <div className="flex justify-center gap-x-4">
+            <td className="border-b border-zinc-300 py-4">
+              <div className="flex justify-start gap-x-2">
                 <NavLink to={`/books/details/${book._id}`}>
-                  <BsInfoCircle className="text-2xl text-green-800" />
+                  <Btn label="More Info" action="info" />
                 </NavLink>
                 <NavLink to={`/books/edit/${book._id}`}>
-                  <AiOutlineEdit className="text-2xl text-yellow-800" />
+                  <Btn label="Edit" action="edit" />
                 </NavLink>
                 <NavLink to={`/books/delete/${book._id}`}>
-                  <MdOutlineDelete className="text-2xl text-red-800" />
+                  <Btn label="Delete" action="delete" />
                 </NavLink>
               </div>
             </td>
