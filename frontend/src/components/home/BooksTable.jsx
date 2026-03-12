@@ -7,13 +7,19 @@ const BooksTable = ({ books }) => {
     <table className="w-full border-collapse border-spacing-2">
       <thead>
         <tr className="">
-          <th className="text-start border-b border-zinc-300 py-4">No</th>
-          <th className="text-start border-b border-zinc-300 py-4">Title</th>
-          <th className="text-start border-b border-zinc-300 py-4">Author</th>
-          <th className="text-start border-b border-zinc-300 py-4">
+          <th className="text-start border-b border-zinc-300 py-4 w-1/12 font-normal">
+            No
+          </th>
+          <th className="text-start border-b border-zinc-300 py-4 w-3/12 font-normal">
+            Title
+          </th>
+          <th className="text-start border-b border-zinc-300 py-4 w-2/12 font-normal">
+            Author
+          </th>
+          <th className="text-start border-b border-zinc-300 py-4 w-2/12 font-normal">
             Publish Year
           </th>
-          <th className="text-start border-b border-zinc-300 py-4">
+          <th className="text-start border-b border-zinc-300 py-4 w-4/12 font-normal">
             Operations
           </th>
         </tr>
