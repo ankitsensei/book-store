@@ -14,7 +14,8 @@ router.post("/", upload.single("photo"), async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
-        message: "Send all required fields: title, author, publishYear",
+        message:
+          "Send all required fields: title, author, publishYear, and book cover image",
       });
     }
 
@@ -66,7 +67,8 @@ router.put("/edit/:id", async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
-        message: "Send all required fields: title, author, publishYear",
+        message:
+          "Send all required fields: title, author, publishYear, and book cover image",
       });
     }
     const { id } = req.params;
