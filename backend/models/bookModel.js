@@ -14,6 +14,10 @@ const bookSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    photo: {
+      type: String,
+      required: true, // Store base64 encoded data
+    },
   },
   {
     timestamps: true,

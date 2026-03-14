@@ -1,20 +1,31 @@
 import express from "express";
 import { Book } from "../models/bookModel.js";
+import multer from "multer";
 
 const router = express.Router();
 
+// Configure multer to store files in memory as Buffer
+const storage = multer.memoryStorage();
+
+const upload = multer({ storage });
+
 // Post a book in db
-router.post("/", async (req, res) => {
+router.post("/", upload.single("photo"), async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
         message: "Send all required fields: title, author, publishYear",
       });
     }
+
+    // Store file as base64
+    const photoBase64 = req.file ? req.file.buffer.toString("base64") : null;
+
     const newBook = {
       title: req.body.title,
       author: req.body.author,
       publishYear: req.body.publishYear,
+      photo: photoBase64,
     };
     const books = await Book.create(newBook);
     return res.status(201).send(books);
@@ -40,7 +51,7 @@ router.get("/", async (req, res) => {
 
 // Get one book from db via id
 router.get("/details/:id", async (req, res) => {
-  try { 
+  try {
     const { id } = req.params;
     const book = await Book.findById(id);
     return res.status(200).json(book);
