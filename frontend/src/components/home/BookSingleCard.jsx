@@ -13,7 +13,10 @@ const BookSingleCard = ({ book }) => {
   return (
     <div
       key={book._id}
-      className="border-2 border-gray-500 rounded-2xl m-4 w-72 h-90 relative hover:shadow-xl bg-[url('https://images.pexels.com/photos/35758327/pexels-photo-35758327.jpeg')] bg-cover bg-center"
+      className="border-2 border-gray-500 rounded-2xl m-4 w-72 h-90 relative hover:shadow-xl  bg-cover bg-center"
+      style={{
+        backgroundImage: `url(data:image/jpeg;base64,${book.photo})`,
+      }}
     >
       <div className="h-1/2">
         <h2 className="absolute top-1 right-1 px-4 py-1 bg-zinc-300 rounded-xl">

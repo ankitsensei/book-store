@@ -35,6 +35,14 @@ const ShowBook = () => {
             <span>{book._id}</span>
           </div>
           <div className="my-4">
+            <span className="text-xl mr-4 text-gray-500">Photo</span>
+            <img
+              src={`data:image/jpeg;base64,${book.photo}`}
+              alt="book"
+              className="w-40 h-60"
+            />
+          </div>
+          <div className="my-4">
             <span className="text-xl mr-4 text-gray-500">Title</span>
             <span>{book.title}</span>
           </div>
