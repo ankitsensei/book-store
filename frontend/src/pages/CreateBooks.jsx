@@ -9,18 +9,22 @@ const CreateBooks = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const imagePreview = image?URL.createObjectURL(image):null;
+
   const handleSaveBook = () => {
-    const data = {
-      title,
-      author,
-      publishYear,
-    };
+    
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("author", author);
+    formData.append("publishYear", publishYear);
+    formData.append("photo", image);
     setLoading(true);
     axios
-      .post("http://localhost:5555/books", data)
+      .post("http://localhost:5555/books", formData)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book created successfully", { variant: "success" });
@@ -66,6 +70,15 @@ const CreateBooks = () => {
             onChange={(e) => setPublishYear(e.target.value)}
             className="border-2 border-gray-500 px-4"
           />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Image</label>
+          <input
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+            className="border-2 border-gray-500 px-4"
+          />
+          <img src={imagePreview} alt="img" className="w-40 h-auto" />
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleSaveBook}>
           Save
