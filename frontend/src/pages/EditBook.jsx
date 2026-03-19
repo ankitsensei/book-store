@@ -9,10 +9,14 @@ const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [image, setImage] = useState(null);
+  const [existingImage, setExistingImage] = useState(""); // old image
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
+  // const imagePreview = image ? URL.createObjectURL(image) : null;
+
   useEffect(() => {
     if (!id) return;
     setLoading(true);
@@ -22,24 +26,28 @@ const EditBook = () => {
         setTitle(response.data.title);
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear);
+        setExistingImage(response.data.photo);
         setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
-        alert("An error happend. Please check console.");
+        // alert("An error happend. Please check console.");
         console.log(error);
       });
   }, [id]);
 
   const handleEditBook = () => {
-    const data = {
-      title,
-      author,
-      publishYear,
-    };
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("author", author);
+    formData.append("publishYear", publishYear);
+
+    if (image) {
+      formData.append("photo", image);
+    }
     setLoading(true);
     axios
-      .put(`http://localhost:5555/books/edit/${id}`, data)
+      .put(`http://localhost:5555/books/edit/${id}`, formData)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book edited successfully", { variant: "success" });
@@ -85,6 +93,18 @@ const EditBook = () => {
             onChange={(e) => setPublishYear(e.target.value)}
             className="border-2 border-gray-500 px-4"
           />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-500">Publish Year</label>
+          <input
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+            className="border-2 border-gray-500 px-4"
+          />
+          {/* <img src={imagePreview} alt="img" className="w-40 h-auto" /> */}
+          {existingImage && !image && (
+            <img src={existingImage} alt="book" className="w-40 my-2" />
+          )}
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleEditBook}>
           Save

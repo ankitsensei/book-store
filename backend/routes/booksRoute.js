@@ -63,7 +63,7 @@ router.get("/details/:id", async (req, res) => {
 });
 
 // Route for update a book
-router.put("/edit/:id", async (req, res) => {
+router.put("/edit/:id", upload.single("photo"), async (req, res) => {
   try {
     if (!req.body.title || !req.body.author || !req.body.publishYear) {
       return res.status(400).send({
@@ -71,8 +71,21 @@ router.put("/edit/:id", async (req, res) => {
           "Send all required fields: title, author, publishYear, and book cover image",
       });
     }
+    // Store file as base64
+    const photoBase64 = req.file ? req.file.buffer.toString("base64") : null;
+
+    const updatedData = {
+      title: req.body.title,
+      author: req.body.author,
+      publishYear: req.body.publishYear,
+      photo: photoBase64,
+    };
+
+    if (photoBase64) {
+      updatedData.photo = photoBase64;
+    }
     const { id } = req.params;
-    const result = await Book.findByIdAndUpdate(id, req.body);
+    const result = await Book.findByIdAndUpdate(id, updatedData);
 
     if (!result) {
       return res.status(404).send({ message: "Book not found" });
