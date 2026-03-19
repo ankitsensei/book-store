@@ -15,7 +15,7 @@ const EditBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
-  // const imagePreview = image ? URL.createObjectURL(image) : null;
+  const imagePreview = image ? URL.createObjectURL(image) : null;
 
   useEffect(() => {
     if (!id) return;
@@ -101,9 +101,15 @@ const EditBook = () => {
             onChange={(e) => setImage(e.target.files[0])}
             className="border-2 border-gray-500 px-4"
           />
-          {/* <img src={imagePreview} alt="img" className="w-40 h-auto" /> */}
+          {imagePreview && (
+            <img src={imagePreview} alt="img" className="w-40 h-auto" />
+          )}
           {existingImage && !image && (
-            <img src={existingImage} alt="book" className="w-40 my-2" />
+            <img
+              src={`data:image/jpeg;base64,${existingImage}`}
+              alt="book"
+              className="w-40 my-2"
+            />
           )}
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleEditBook}>
