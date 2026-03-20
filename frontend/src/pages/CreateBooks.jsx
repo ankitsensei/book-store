@@ -42,41 +42,43 @@ const CreateBooks = () => {
       <BackBtn />
       <h1 className="text-3xl my-4">Create Book</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col border-2 rounded-xl w-150 p-4 mx-auto bg-white">
-        <div className="my-4">
+      <div className="flex flex-col border-2 rounded-xl w-100 p-4 mx-auto bg-white">
+        <div className="flex flex-col">
           <label className="text-xl mr-4 text-gray-500">Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border-2 border-gray-500 px-4"
+            className="border-2 border-gray-500 p-2 rounded-lg"
           />
         </div>
-        <div className="my-4">
+        <div className="flex flex-col">
           <label className="text-xl mr-4 text-gray-500">Author</label>
           <input
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="border-2 border-gray-500 px-4"
+            className="border-2 border-gray-500 p-2 rounded-lg"
           />
         </div>
-        <div className="my-4">
+        <div className="flex flex-col">
           <label className="text-xl mr-4 text-gray-500">Publish Year</label>
           <input
             type="text"
             value={publishYear}
             onChange={(e) => setPublishYear(e.target.value)}
-            className="border-2 border-gray-500 px-4"
+            className="border-2 border-gray-500 p-2 rounded-lg"
           />
         </div>
-        <div className="my-4">
+        <div className="flex flex-col">
           <label className="text-xl mr-4 text-gray-500">Image</label>
           <input
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
-            className="border-2 border-gray-500 px-4"
+            className="border-2 border-gray-500 p-2 rounded-lg"
           />
+        </div>
+        <div className="mt-4">
           {imagePreview ? (
             <img src={imagePreview} alt="img" className="w-40 h-54" />
           ) : (
@@ -86,7 +88,10 @@ const CreateBooks = () => {
             />
           )}
         </div>
-        <button className="p-2 bg-sky-300 m-8" onClick={handleSaveBook}>
+        <button
+          className="p-2 bg-sky-300 m-8 rounded-full"
+          onClick={handleSaveBook}
+        >
           Save
         </button>
       </div>
