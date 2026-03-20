@@ -13,10 +13,9 @@ const CreateBooks = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const imagePreview = image?URL.createObjectURL(image):null;
+  const imagePreview = image ? URL.createObjectURL(image) : null;
 
   const handleSaveBook = () => {
-    
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
@@ -39,11 +38,11 @@ const CreateBooks = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-[#F1F1F1] w-full h-screen">
       <BackBtn />
       <h1 className="text-3xl my-4">Create Book</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col border-2 rounded-xl w-150 p-4 mx-auto">
+      <div className="flex flex-col border-2 rounded-xl w-150 p-4 mx-auto bg-white">
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Title</label>
           <input
@@ -78,7 +77,14 @@ const CreateBooks = () => {
             onChange={(e) => setImage(e.target.files[0])}
             className="border-2 border-gray-500 px-4"
           />
-          <img src={imagePreview} alt="img" className="w-40 h-auto" />
+          {imagePreview ? (
+            <img src={imagePreview} alt="img" className="w-40 h-54" />
+          ) : (
+            <img
+              src="https://edit.org/images/cat/book-covers-big-2019101610.jpg"
+              className="w-40 h-54"
+            />
+          )}
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleSaveBook}>
           Save
