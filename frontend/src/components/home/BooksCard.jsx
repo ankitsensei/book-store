@@ -4,7 +4,8 @@ import BookSingleCard from "./BookSingleCard";
 
 const BooksCard = ({ books }) => {
   return (
-    <div className="grid sm:grid-cols-2 1g: grid-cols-3 xl:grid-cols-4">
+    // <div className="grid sm:grid-cols-2 1g: grid-cols-3 xl:grid-cols-4">
+    <div className="flex flex-wrap">
       {books.map((item) => (
         <BookSingleCard key={item._id} book={item} />
       ))}

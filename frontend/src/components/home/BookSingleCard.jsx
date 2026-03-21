@@ -10,7 +10,7 @@ const BookSingleCard = ({ book }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="m-4 w-72 h-96 relative rounded-2xl overflow-hidden hover:shadow-xl">
+    <div className="m-2 w-64 h-92 relative rounded-2xl overflow-hidden hover:shadow-xl">
       {/* Book Image */}
       <img
         src={`data:image/jpeg;base64,${book.photo}`}

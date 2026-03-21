@@ -32,13 +32,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-[#F1F1F1] w-full h-screen flex">
+    <div className="bg-[#F1F1F1] w-full h-full flex">
       <Sidebar showType={showType} setShowType={setShowType} />
 
       <div className="w-full h-full p-4">
         <div className="w-full h-20 border-b border-zinc-300"></div>
         <div className="bg-white flex flex-col gap-10 mt-4 p-5 rounded-3xl">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between item s-center">
             <div className="flex bg-[#F1F1F1] px-1 py-1 rounded-xl">
               <button
                 className={`flex items-center rounded-lg px-2 py-1 ${showType == "table" && "bg-white"}`}
