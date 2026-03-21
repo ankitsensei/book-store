@@ -42,7 +42,7 @@ const CreateBooks = () => {
       <BackBtn />
       <h1 className="text-3xl my-4 text-center">Add a book to collection</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col rounded-xl w-110 p-6 mx-auto bg-white">
+      <div className="flex flex-col gap-2 rounded-xl w-110 p-6 mx-auto bg-white">
         <div className="flex flex-col">
           <label className="text-xl mr-4 text-gray-500">Title</label>
           <input
@@ -97,7 +97,7 @@ const CreateBooks = () => {
         </div>
         <div className="w-full flex justify-center">
           <button
-            className="px-4 py-2 bg-green-500 text-white mt-8 rounded-lg"
+            className="px-4 py-2 bg-green-500 text-white mt-4 rounded-lg"
             onClick={handleSaveBook}
           >
             Save This Book
