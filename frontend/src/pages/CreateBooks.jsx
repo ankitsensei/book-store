@@ -23,7 +23,7 @@ const CreateBooks = () => {
     formData.append("photo", image);
     setLoading(true);
     axios
-      .post("http://localhost:5555/books", formData)
+      .post("https://book-store-z4pq.onrender.com/books", formData)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book created successfully", { variant: "success" });
