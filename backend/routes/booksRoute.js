@@ -72,7 +72,9 @@ router.put("/edit/:id", upload.single("photo"), async (req, res) => {
       });
     }
     // Store file as base64
-    const photoBase64 = req.file ? req.file.buffer.toString("base64") : null;
+    const photoBase64 = req.file
+      ? req.file.buffer.toString("base64")
+      : req.body.existingImage;
 
     const updatedData = {
       title: req.body.title,

@@ -41,9 +41,10 @@ const EditBook = () => {
     formData.append("title", title);
     formData.append("author", author);
     formData.append("publishYear", publishYear);
-
     if (image) {
       formData.append("photo", image);
+    } else {
+      formData.append("photo", existingImage);
     }
     setLoading(true);
     axios
