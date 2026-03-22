@@ -52,8 +52,17 @@ project-root/
 │   └── server.js
 │
 └── README.md
+
+.env
 ```
 
+## .env
+dotenv file contains
+```
+PORT=5555
+
+mongoDBURL=mongoDB_URL
+```
 ---
 
 ## ⚙️ Installation & Setup
