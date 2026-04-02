@@ -21,7 +21,7 @@ const EditBook = () => {
     if (!id) return;
     setLoading(true);
     axios
-      .get(`https://book-store-z4pq.onrender.com/books/details/${id}`)
+      .get(`https://book-store-production-c4a6.up.railway.app/books/details/${id}`)
       .then((response) => {
         setTitle(response.data.title);
         setAuthor(response.data.author);
@@ -48,7 +48,7 @@ const EditBook = () => {
     }
     setLoading(true);
     axios
-      .put(`https://book-store-z4pq.onrender.com/books/edit/${id}`, formData)
+      .put(`https://book-store-production-c4a6.up.railway.app//books/edit/${id}`, formData)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book edited successfully", { variant: "success" });

@@ -20,7 +20,7 @@ const Home = () => {
     setLoading(true);
 
     axios
-      .get("https://book-store-z4pq.onrender.com/books")
+      .get("https://book-store-production-c4a6.up.railway.app/books")
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);

@@ -14,7 +14,7 @@ const DeleteBook = () => {
     if (!id) return;
     setLoading(true);
     axios
-      .delete(`https://book-store-z4pq.onrender.com/books/delete/${id}`)
+      .delete(`https://book-store-production-c4a6.up.railway.app/books/delete/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book deleted successfully", { variant: "success" });
