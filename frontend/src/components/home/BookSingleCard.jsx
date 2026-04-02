@@ -10,7 +10,7 @@ const BookSingleCard = ({ book }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="m-2 w-64 h-92 relative rounded-2xl overflow-hidden hover:shadow-xl">
+    <div className="m-1 xl:m-2 w-40 md:w-48 h-54 md:h-60 xl:w-64 xl:h-92 relative rounded-2xl overflow-hidden hover:shadow-xl">
       {/* Book Image */}
       <img
         src={`data:image/jpeg;base64,${book.photo}`}
@@ -19,16 +19,16 @@ const BookSingleCard = ({ book }) => {
       />
 
       {/* Publish Year */}
-      <h2 className="absolute top-2 right-2 px-3 py-1 bg-white rounded-lg text-sm font-semibold">
+      <h2 className="absolute top-2 right-2 px-3 py-1 bg-white rounded-lg text-[12px] lg:text-sm font-semibold">
         {book.publishYear}
       </h2>
 
       {/* Info Section */}
       <div className="absolute bottom-0 w-full bg-zinc-100 bg-opacity-90 p-3 text-black rounded-b-2xl">
-        <h2 className="text-lg font-semibold">{book.title}</h2>
+        <h2 className="text-[14px] lg:text-lg font-semibold">{book.title}</h2>
 
-        <div className="flex items-center gap-2 text-sm mt-1">
-          <BiUserCircle className="text-xl" />
+        <div className="flex items-center gap-2 text-[12px] lg:text-sm mt-1">
+          <BiUserCircle className="text-[14px] lg:text-xl" />
           <span>{book.author}</span>
         </div>
 

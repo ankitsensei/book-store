@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
     <div className="bg-[#F1F1F1] w-full h-full flex">
-      <Sidebar showType={showType} setShowType={setShowType} />
+      <Sidebar showType={showType} setShowType={setShowType}/>
 
       <div className="w-full h-full p-4">
         <div className="w-full h-20 border-b border-zinc-300"></div>
