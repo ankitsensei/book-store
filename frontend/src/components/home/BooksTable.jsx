@@ -26,15 +26,15 @@ const BooksTable = ({ books }) => {
       </thead>
       <tbody className="">
         {books.map((book, index) => (
-          <tr key={book._id} className="h-8 w-full">
-            <td className="border-b border-zinc-300 py-4">{index + 1}</td>
-            <td className="border-b border-zinc-300 py-4">{book.title}</td>
-            <td className="border-b border-zinc-300 py-4">{book.author}</td>
-            <td className="border-b border-zinc-300 py-4">
+          <tr key={book._id} className="h-8 w-full text-[12px] lg:text-sm">
+            <td className="border-b border-zinc-300 lg:py-4">{index + 1}</td>
+            <td className="border-b border-zinc-300 lg:py-4">{book.title}</td>
+            <td className="border-b border-zinc-300 lg:py-4">{book.author}</td>
+            <td className="border-b border-zinc-300 lg:py-4">
               {book.publishYear}
             </td>
             <td className="border-b border-zinc-300 py-4">
-              <div className="flex justify-start gap-x-2">
+              <div className="flex justify-start gap-1 lg:gap-x-2">
                 <NavLink to={`/books/details/${book._id}`}>
                   <Btn label="More Info" action="info" />
                 </NavLink>

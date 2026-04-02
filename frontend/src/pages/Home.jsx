@@ -33,10 +33,11 @@ const Home = () => {
 
   return (
     <div className="bg-[#F1F1F1] w-full h-full flex">
-      <Sidebar showType={showType} setShowType={setShowType}/>
-
-      <div className="w-full h-full p-1 lg:p-4">
-        <div className="w-full h-20 border-b border-zinc-300"></div>
+      <Sidebar showType={showType} setShowType={setShowType} />
+      <div className="w-full h-full lg:p-4">
+        <div className="w-full h-20 border-b border-zinc-300 flex flex-col items-center justify-center">
+          <h1 className="lg:hidden">Book List</h1>
+        </div>
         <div className="bg-white flex flex-col gap-10 mt-4 p-2 lg:p-5 rounded-3xl">
           <div className="flex justify-between item s-center">
             <div className="flex bg-[#F1F1F1] md:px-1 md:py-1 rounded-xl">
